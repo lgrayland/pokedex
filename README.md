@@ -3,6 +3,8 @@
 
 Pokémon Explorer is a modern web Pokédex built with Next.js, React, and Tailwind CSS. Browse, search, and explore Pokémon from the PokéAPI with infinite scrolling, beautiful UI, and a favourites system.
 
+[Demo](https://pokedex-rho-ebon-96.vercel.app/)
+
 ## Features
 
 - Browse Pokémon with infinite scrolling
