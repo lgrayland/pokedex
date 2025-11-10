@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
+    <div className="">
       <div className="container mx-auto px-4 py-8">
         <div className="animate-pulse space-y-8">
           <div className="h-8 bg-muted rounded w-32"></div>

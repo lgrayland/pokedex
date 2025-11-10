@@ -26,7 +26,7 @@ export default async function PokemonPage({
   const imageUrl = pokemon.sprites.other["official-artwork"].front_default;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
+    <div className="">
       <div className="container mx-auto px-4 py-8">
         <Link href="/">
           <Button variant="ghost" className="mb-6 hover:bg-primary/10">

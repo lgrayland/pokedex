@@ -1,6 +1,6 @@
-import PokemonScroller from "@/modules/pokemon/templates/PokemonScroller";
+import PokemonScroller from "@/modules/pokemon/components/PokemonScroller";
 
-export default async function Home() {
+export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">

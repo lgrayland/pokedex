@@ -2,7 +2,7 @@
 
 import { useFavourites } from "@/context/favourites";
 import { Button } from "@/modules/common/components/ui/button";
-import { PokemonCard } from "@/modules/pokemon/components/PokemonCard";
+import { PokemonCard } from "@/modules/pokemon/components/Card";
 import { ArrowLeft, Heart } from "lucide-react";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ export default function FavouritesPage() {
   const { favourites } = useFavourites();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
+    <div className="">
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-8">
           <Link href="/">

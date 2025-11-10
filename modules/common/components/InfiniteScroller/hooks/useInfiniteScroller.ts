@@ -11,7 +11,10 @@ export const useInfiniteScroller = ({
 
   const intersected = useCallback(
     (entries: IntersectionObserverEntry[]) => {
+      console.log("Observing intersection", entries);
+      console.log("is intersecting:", entries[0].isIntersecting);
       if (entries[0].isIntersecting && !isLoading) {
+        console.log("Intersected - loading more");
         callback();
       }
     },
