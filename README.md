@@ -58,6 +58,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to use the P
 ## Credits
 
 - Pokémon data & images from [PokéAPI](https://pokeapi.co/)
-- UI inspired by modern Pokédex apps
+- UI inspired by modern Pokédex apps.
 
 Made with ❤️ using Next.js, React, and PokéAPI.
