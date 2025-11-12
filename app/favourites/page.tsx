@@ -2,8 +2,9 @@
 
 import { useFavourites } from "@/context/favourites";
 import { Button } from "@/modules/common/components/ui/button";
-import { PokemonCard } from "@/modules/pokemon/components/Card";
-import { ArrowLeft, Heart } from "lucide-react";
+import BackButton from "@/modules/pokemon/components/BackButton";
+import { PokemonCard } from "@/modules/pokemon/components/PokemonCard";
+import { Heart } from "lucide-react";
 import Link from "next/link";
 
 export default function FavouritesPage() {
@@ -13,12 +14,7 @@ export default function FavouritesPage() {
     <div className="">
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-8">
-          <Link href="/">
-            <Button variant="ghost" className="hover:bg-primary/10">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Pokédex
-            </Button>
-          </Link>
+          <BackButton />
         </div>
 
         <div className="text-center mb-8">
