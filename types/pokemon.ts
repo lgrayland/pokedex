@@ -26,4 +26,5 @@ export interface ListPokemonResult {
   count: number;
   next: string | null;
   previous: string | null;
+  nextPageParam: number | null;
 }

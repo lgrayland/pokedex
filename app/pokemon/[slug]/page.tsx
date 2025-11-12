@@ -1,15 +1,13 @@
 import { typeColors } from "@/modules/pokemon/helpers/typeColors";
 import { getPokemon } from "@/lib/pokemon";
-import { Button } from "@/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
 import { Progress } from "@/ui/progress";
-import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { statNames } from "@/modules/pokemon/helpers/statNames";
 import { Badge } from "@/ui/badge";
 import { Pokemon } from "@/types/pokemon";
+import BackButton from "@/modules/pokemon/components/BackButton";
 
 export default async function PokemonPage({
   params,
@@ -28,12 +26,7 @@ export default async function PokemonPage({
   return (
     <div className="">
       <div className="container mx-auto px-4 py-8">
-        <Link href="/">
-          <Button variant="ghost" className="mb-6 hover:bg-primary/10">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Pokédex
-          </Button>
-        </Link>
+        <BackButton />
 
         <div className="grid md:grid-cols-2 gap-8 mb-8">
           <Card className="bg-card/80 backdrop-blur-sm border-2">

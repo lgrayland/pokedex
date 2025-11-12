@@ -1,29 +1,19 @@
-"use client";
+import { getPokemon } from "@/lib/pokemon";
+import Modal from "@/modules/pokemon/components/PokemonModal";
+import { Pokemon } from "@/types/pokemon";
+import { notFound } from "next/navigation";
 
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/ui/dialog";
-import { useRouter } from "next/navigation";
+export default async function PokemonModal({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const pokemon: Pokemon | null = await getPokemon(slug);
 
-export default function PokemonModal() {
-  const router = useRouter();
+  if (!pokemon) {
+    notFound();
+  }
 
-  return (
-    <Dialog
-      defaultOpen
-      open
-      onOpenChange={() => {
-        router.back();
-      }}
-    >
-      <DialogContent>test</DialogContent>
-    </Dialog>
-  );
+  return <Modal pokemon={pokemon} />;
 }

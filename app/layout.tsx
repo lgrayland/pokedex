@@ -24,10 +24,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  list,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
-  list?: React.ReactNode;
+  modal?: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -40,12 +40,12 @@ export default function RootLayout({
               <div className="container mx-auto px-4 pt-8">
                 <div className="flex justify-between">
                   <div className="flex gap-2">
-                    <Link href={"/"}>
+                    <Link href={"/csr"}>
                       <Button
                         variant="outline"
                         className="relative bg-transparent"
                       >
-                        Client
+                        CSR
                       </Button>
                     </Link>
                     <Link href={"/ssr"}>
@@ -54,6 +54,14 @@ export default function RootLayout({
                         className="relative bg-transparent"
                       >
                         SSR
+                      </Button>
+                    </Link>
+                    <Link href={"/tanstack"}>
+                      <Button
+                        variant="outline"
+                        className="relative bg-transparent"
+                      >
+                        TanStack
                       </Button>
                     </Link>
                     <Link href={"/blur"}>
@@ -68,6 +76,7 @@ export default function RootLayout({
                   <FavLink />
                 </div>
                 {children}
+                {modal}
               </div>
             </main>
           </FavouritesProvider>
