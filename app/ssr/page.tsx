@@ -1,4 +1,6 @@
+import { Skeleton } from "@/modules/common/components/ui/skeleton";
 import PokemonTable from "@/modules/pokemon/components/PokemonTable";
+import { Suspense } from "react";
 
 export default async function ServerListPage(props: {
   searchParams?: Promise<{
@@ -22,7 +24,9 @@ export default async function ServerListPage(props: {
           the first generation of these amazing creatures.
         </p>
       </div>
-      <PokemonTable currentPage={currentPage} pageCount={count} />
+      <Suspense key={currentPage} fallback={<Skeleton />}>
+        <PokemonTable currentPage={currentPage} pageCount={count} />
+      </Suspense>
     </div>
   );
 }

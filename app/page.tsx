@@ -1,5 +1,3 @@
-import PokemonScroller from "@/modules/pokemon/components/PokemonScroller";
-
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
@@ -8,11 +6,10 @@ export default function Home() {
           Pokédex
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-          Discover and explore the wonderful world of Pokémon. Browse through
-          the first generation of these amazing creatures.
+          A quick demo application showcasing various data fetching strategies
+          using Next.js and Pokémon API.
         </p>
       </div>
-      <PokemonScroller />
     </div>
   );
 }
