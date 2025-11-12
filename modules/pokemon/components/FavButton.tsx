@@ -1,3 +1,5 @@
+"use client";
+
 import { useFavourites } from "@/context/favourites";
 import { Button } from "@/modules/common/components/ui/button";
 import { Pokemon } from "@/types/pokemon";

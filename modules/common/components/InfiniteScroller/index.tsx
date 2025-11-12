@@ -17,10 +17,10 @@ const InfiniteScroller = ({
   });
 
   return (
-    <div className="">
+    <div>
       {children}
       {isLoading && loader}
-      <div ref={targetRef}></div>
+      <div id="infinite-scroll-target" ref={targetRef}></div>
     </div>
   );
 };

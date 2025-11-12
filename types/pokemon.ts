@@ -20,3 +20,11 @@ export interface Pokemon {
     };
   }>;
 }
+
+export interface ListPokemonResult {
+  results: Pokemon[];
+  count: number;
+  next: string | null;
+  previous: string | null;
+  nextPageParam: number | null;
+}

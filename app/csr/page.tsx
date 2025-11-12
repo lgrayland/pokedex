@@ -1,15 +1,18 @@
-export default function Home() {
+import PokemonScroller from "@/modules/pokemon/components/PokemonScroller";
+
+export default function CSRPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
         <h1 className="text-5xl font-bold text-balance mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-          Pokédex
+          Pokédex CSR
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-          A quick demo application showcasing various data fetching strategies
-          using Next.js and Pokémon API.
+          Discover and explore the wonderful world of Pokémon. Browse through
+          the first generation of these amazing creatures.
         </p>
       </div>
+      <PokemonScroller />
     </div>
   );
 }

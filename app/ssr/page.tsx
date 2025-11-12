@@ -1,25 +1,18 @@
-import { getQueryClient } from "@/lib/get-query-client";
-import { listPokemon } from "@/lib/pokemon";
-import PokemonScrollerWithQuery from "@/modules/pokemon/templates/PokemonScrollerWithQuery";
-import { PageProps } from "@/types/common";
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { Skeleton } from "@/modules/common/components/ui/skeleton";
+import PokemonTable from "@/modules/pokemon/components/PokemonTable";
+import { Suspense } from "react";
 
-export default async function Home({ searchParams }: PageProps) {
-  const { page } = (await searchParams) || {};
-  const pageNumber = Number(page) || 1;
-
-  const queryClient = getQueryClient();
-
-  // Prefetch all pages from 0 to the current page for SSR
-  // This ensures we have all data for a continuous list
-  await queryClient.fetchInfiniteQuery({
-    queryKey: ["pokemonList", pageNumber],
-    initialPageParam: 0,
-    queryFn: listPokemon,
-    getNextPageParam: (lastPage) => lastPage.nextPageParam,
-    pages: pageNumber, // Fetch pages 0 through pageNumber
-  });
-
+export default async function ServerListPage(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const currentPage = Number(searchParams?.page) || 1;
+  const { count } = await fetch("https://pokeapi.co/api/v2/pokemon").then(
+    (res) => res.json()
+  );
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
@@ -31,9 +24,9 @@ export default async function Home({ searchParams }: PageProps) {
           the first generation of these amazing creatures.
         </p>
       </div>
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <PokemonScrollerWithQuery page={pageNumber} />
-      </HydrationBoundary>
+      <Suspense key={currentPage} fallback={<Skeleton />}>
+        <PokemonTable currentPage={currentPage} pageCount={count} />
+      </Suspense>
     </div>
   );
 }

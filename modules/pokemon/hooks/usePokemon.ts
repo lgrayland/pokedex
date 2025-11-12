@@ -11,9 +11,9 @@ export const usePokemon = () => {
     while (true) {
       try {
         setIsLoading(true);
-        const pokemon = await listPokemon({ limit, offset });
+        const { results: pokemon } = await listPokemon({ limit, offset });
         setIsLoading(false);
-        setPokemonData((prev: Pokemon[]) => [...prev, ...pokemon.data]);
+        setPokemonData((prev: Pokemon[]) => [...prev, ...pokemon]);
         offset = offset + limit;
 
         yield pokemon;

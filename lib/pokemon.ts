@@ -1,5 +1,7 @@
 "use server";
 
+import { ListPokemonResult } from "@/types/pokemon";
+
 export async function getPokemon(slug: string) {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${slug}`);
   if (!res.ok) {
@@ -16,21 +18,21 @@ export async function listPokemon({
   limit?: number;
   offset?: number;
   pageParam?: number;
-}) {
+}): Promise<ListPokemonResult> {
   const res = await fetch(
     `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${
       offset ?? pageParam * limit
     }`
   );
-  const pokemonList = await res.json();
+  const data = await res.json();
+  // fetch each pokemon to get pokemon details - could return reduced details rather than whole object
   const results = await Promise.all(
-    pokemonList.results.map((pokemon: { url: string }) =>
+    data.results.map((pokemon: { url: string }) =>
       fetch(pokemon.url).then((res) => res.json())
     )
   );
+  const { count, next, previous } = data;
+  const nextPageParam = pageParam * limit < data.count ? pageParam + 1 : null;
 
-  const nextPageParam =
-    pageParam * limit < pokemonList.count ? pageParam + 1 : null;
-
-  return { data: results, nextPageParam };
+  return { results, nextPageParam, count, next, previous };
 }
